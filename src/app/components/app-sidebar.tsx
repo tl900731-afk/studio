@@ -18,8 +18,8 @@ import {
   User,
   Wind,
   Anchor,
-  Waves,
 } from "lucide-react";
+import { Logo } from "./logo";
 
 const navItems = [
   { href: "/", label: "Sobre o Criador", icon: User },
@@ -46,7 +46,7 @@ export function AppSidebar() {
     <Sidebar collapsible="icon" side="left">
       <SidebarHeader>
         <div className="flex items-center gap-2 pl-2">
-          <Waves className="w-8 h-8 text-primary" />
+          <Logo className="w-10 h-10" />
           <div className="group-data-[collapsible=icon]:hidden">
              <h1 className="text-xl font-bold font-headline">Di Cara</h1>
           </div>
@@ -60,17 +60,19 @@ export function AppSidebar() {
             </SidebarMenuItem>
           ) : (
             <SidebarMenuItem key={item.href}>
-              <SidebarMenuButton
-                asChild
-                isActive={pathname === item.href}
-                tooltip={{children: item.label}}
-                size="default"
-              >
-                <Link href={item.href!}>
-                  <item.icon className="h-5 w-5" />
-                  <span>{item.label}</span>
-                </Link>
-              </SidebarMenuButton>
+              <Link href={item.href!} passHref>
+                <SidebarMenuButton
+                  isActive={pathname === item.href}
+                  tooltip={{children: item.label}}
+                  size="default"
+                  asChild
+                >
+                  <a>
+                    <item.icon className="h-5 w-5" />
+                    <span>{item.label}</span>
+                  </a>
+                </SidebarMenuButton>
+              </Link>
             </SidebarMenuItem>
           )
         )}
