@@ -2,6 +2,7 @@ import { SidebarProvider, SidebarInset, SidebarTrigger } from "@/components/ui/s
 import { AppSidebar } from "@/app/components/app-sidebar";
 import { Button } from "@/components/ui/button";
 import { PanelLeft } from "lucide-react";
+import React from "react";
 
 export default function AppLayout({
   children,
