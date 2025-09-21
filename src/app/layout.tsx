@@ -1,11 +1,33 @@
-import type {Metadata} from 'next';
+import type {Metadata, Viewport} from 'next';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
 
+const APP_NAME = "Di Cara Companion";
+const APP_DESCRIPTION = "Seu companheiro para momentos de ansiedade.";
+
 export const metadata: Metadata = {
-  title: 'Di Cara Companion',
-  description: 'Seu companheiro para momentos de ansiedade.',
+  applicationName: APP_NAME,
+  title: APP_NAME,
+  description: APP_DESCRIPTION,
+  manifest: "/manifest.json",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: APP_NAME,
+    // startUpImage: [],
+  },
+  formatDetection: {
+    telephone: false,
+  },
+  icons: [
+    { rel: "apple-touch-icon", url: "/icons/icon-192x192.png" },
+  ],
 };
+
+export const viewport: Viewport = {
+  themeColor: "#8bcdf3",
+};
+
 
 export default function RootLayout({
   children,

@@ -1,0 +1,21 @@
+{
+  "name": "Di Cara Companion",
+  "short_name": "Di Cara",
+  "description": "Seu companheiro para momentos de ansiedade.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f2faff",
+  "theme_color": "#8bcdf3",
+  "icons": [
+    {
+      "src": "/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
