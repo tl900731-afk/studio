@@ -43,7 +43,7 @@ export function AppSidebar() {
   const pathname = usePathname();
 
   return (
-    <Sidebar collapsible="icon" side="left">
+    <Sidebar collapsible="icon" side="left" title="Navegação Principal" description="Menu de navegação para as seções do aplicativo.">
       <SidebarHeader>
         <div className="flex items-center gap-2 pl-2">
           <Logo className="w-10 h-10" />

@@ -10,7 +10,7 @@ import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Separator } from "@/components/ui/separator"
-import { Sheet, SheetContent } from "@/components/ui/sheet"
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription } from "@/components/ui/sheet"
 import { Skeleton } from "@/components/ui/skeleton"
 import {
   Tooltip,
@@ -162,6 +162,8 @@ const Sidebar = React.forwardRef<
     side?: "left" | "right"
     variant?: "sidebar" | "floating" | "inset"
     collapsible?: "offcanvas" | "icon" | "none"
+    title?: string;
+    description?: string;
   }
 >(
   (
@@ -171,6 +173,8 @@ const Sidebar = React.forwardRef<
       collapsible = "offcanvas",
       className,
       children,
+      title,
+      description,
       ...props
     },
     ref
@@ -206,6 +210,10 @@ const Sidebar = React.forwardRef<
             }
             side={side}
           >
+            <SheetHeader className="sr-only">
+              {title && <SheetTitle>{title}</SheetTitle>}
+              {description && <SheetDescription>{description}</SheetDescription>}
+            </SheetHeader>
             <div className="flex h-full w-full flex-col">{children}</div>
           </SheetContent>
         </Sheet>
