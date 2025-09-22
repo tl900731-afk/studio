@@ -532,6 +532,35 @@ const sidebarMenuButtonVariants = cva(
   }
 )
 
+const ClientOnlyTooltip = ({ children, tooltip }: { children: React.ReactNode, tooltip: string | React.ComponentProps<typeof TooltipContent> }) => {
+  const [isClient, setIsClient] = React.useState(false);
+  React.useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  if (!isClient) {
+    return <>{children}</>;
+  }
+  
+  if (typeof tooltip === "string") {
+    tooltip = {
+      children: tooltip,
+    }
+  }
+
+  return (
+    <Tooltip>
+      <TooltipTrigger asChild>{children}</TooltipTrigger>
+      <TooltipContent
+        side="right"
+        align="center"
+        {...tooltip}
+      />
+    </Tooltip>
+  );
+};
+
+
 const SidebarMenuButton = React.forwardRef<
   HTMLButtonElement,
   React.ComponentProps<"button"> & {
@@ -566,27 +595,11 @@ const SidebarMenuButton = React.forwardRef<
       />
     )
 
-    if (!tooltip) {
+    if (!tooltip || isMobile || state === 'expanded') {
       return button
     }
 
-    if (typeof tooltip === "string") {
-      tooltip = {
-        children: tooltip,
-      }
-    }
-
-    return (
-      <Tooltip>
-        <TooltipTrigger asChild>{button}</TooltipTrigger>
-        <TooltipContent
-          side="right"
-          align="center"
-          hidden={state !== "collapsed" || isMobile}
-          {...tooltip}
-        />
-      </Tooltip>
-    )
+    return <ClientOnlyTooltip tooltip={tooltip}>{button}</ClientOnlyTooltip>;
   }
 )
 SidebarMenuButton.displayName = "SidebarMenuButton"
