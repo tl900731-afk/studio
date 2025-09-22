@@ -65,9 +65,12 @@ export function AppSidebar() {
                   isActive={pathname === item.href}
                   tooltip={{children: item.label}}
                   size="default"
+                  asChild
                 >
-                  <item.icon className="h-5 w-5" />
-                  <span>{item.label}</span>
+                  <a>
+                    <item.icon className="h-5 w-5" />
+                    <span>{item.label}</span>
+                  </a>
                 </SidebarMenuButton>
               </Link>
             </SidebarMenuItem>
