@@ -12,13 +12,9 @@ import {
 } from "@/components/ui/sidebar";
 import {
   BookOpen,
-  BrainCircuit,
-  HeartPulse,
   Home,
   LifeBuoy,
   User,
-  Wind,
-  Anchor,
 } from "lucide-react";
 import { Logo } from "./logo";
 
@@ -26,14 +22,6 @@ const navItems = [
   { href: "/", label: "Início", icon: Home },
   { href: "/sobre-o-criador", label: "Sobre o Criador", icon: User },
   { href: "/about-program", label: "Sobre o Programa", icon: BookOpen },
-  {
-    label: "Técnicas",
-    isHeading: true,
-  },
-  { href: "/techniques/breathing", label: "Respiração", icon: Wind },
-  { href: "/techniques/grounding", label: "Grounding", icon: Anchor },
-  { href: "/techniques/cognitive", label: "Cognitivas", icon: BrainCircuit },
-  { href: "/techniques/physical", label: "Físicas", icon: HeartPulse },
   {
     label: "Ajuda",
     isHeading: true,
