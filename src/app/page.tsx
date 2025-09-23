@@ -1,103 +1,27 @@
-import { CREATOR_INFO } from "@/lib/creator-data";
-import { Badge } from "@/components/ui/badge";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
-import { Globe, Instagram, Mail } from "lucide-react";
-import { WhatsAppIcon } from "@/app/components/icons";
-import { WhatsAppSupport } from "@/app/components/whatsapp-support";
-import Image from "next/image";
-import { logAccess } from "@/lib/logging";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
+import { Logo } from "@/app/components/logo";
+import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 
-export default function CreatorPage() {
-    logAccess("Criador");
-    const creatorImage = PlaceHolderImages.find(img => img.id === 'creator');
-    const formatPhone = (phone: string) =>
-    phone.replace(/(\d{2})(\d{2})(\d{5})(\d{4})/, "+$1 ($2) $3-$4");
-
+export default function WelcomePage() {
   return (
-    <div className="container mx-auto p-0">
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        <div className="lg:col-span-2 space-y-8">
-          <Card className="overflow-hidden">
-            <CardHeader className="flex flex-col sm:flex-row items-start gap-4 bg-muted/50 p-6">
-                <Avatar className="h-24 w-24 border">
-                    <AvatarImage asChild>
-                        {creatorImage ? (
-                            <Image 
-                              src={creatorImage.imageUrl} 
-                              alt={CREATOR_INFO.name} 
-                              width={96} 
-                              height={96} 
-                              data-ai-hint={creatorImage.imageHint} 
-                            />
-                        ) : (
-                            <div className="w-full h-full bg-muted" />
-                        )}
-                    </AvatarImage>
-                    <AvatarFallback>{CREATOR_INFO.name.charAt(0)}</AvatarFallback>
-                </Avatar>
-                <div className="grid gap-0.5 pt-2">
-                    <CardTitle className="text-2xl font-headline">
-                        <div className="group flex items-center gap-2">
-                          {CREATOR_INFO.name}
-                        </div>
-                    </CardTitle>
-                    <p className="text-lg text-primary">{CREATOR_INFO.title}</p>
-                </div>
-            </CardHeader>
-            <CardContent className="p-6 space-y-4">
-              <p className="text-muted-foreground">{CREATOR_INFO.bio}</p>
-              <div className="flex flex-wrap gap-2">
-                {CREATOR_INFO.qualifications.map((qual, index) => (
-                  <Badge key={index} variant="secondary" className="text-sm">
-                    {qual}
-                  </Badge>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-          
-          <Card>
-            <CardHeader>
-              <CardTitle>Contato Direto</CardTitle>
-            </CardHeader>
-            <CardContent className="grid sm:grid-cols-2 gap-2">
-                <a href={`https://wa.me/${CREATOR_INFO.contact.whatsapp}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 p-3 rounded-lg hover:bg-accent/50 transition-colors">
-                    <WhatsAppIcon className="h-6 w-6 text-green-500"/>
-                    <div>
-                        <p className="font-semibold">WhatsApp</p>
-                        <p className="text-sm text-muted-foreground">{formatPhone(CREATOR_INFO.contact.whatsapp)}</p>
-                    </div>
-                </a>
-                <a href={`mailto:${CREATOR_INFO.contact.email}`} className="flex items-center gap-3 p-3 rounded-lg hover:bg-accent/50 transition-colors">
-                    <Mail className="h-6 w-6 text-muted-foreground"/>
-                    <div>
-                        <p className="font-semibold">E-mail</p>
-                        <p className="text-sm text-muted-foreground">{CREATOR_INFO.contact.email}</p>
-                    </div>
-                </a>
-                <a href={`https://instagram.com/${CREATOR_INFO.contact.instagram}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 p-3 rounded-lg hover:bg-accent/50 transition-colors">
-                    <Instagram className="h-6 w-6 text-muted-foreground"/>
-                    <div>
-                        <p className="font-semibold">Instagram</p>
-                        <p className="text-sm text-muted-foreground">@{CREATOR_INFO.contact.instagram}</p>
-                    </div>
-                </a>
-                 <a href={CREATOR_INFO.contact.website} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 p-3 rounded-lg hover:bg-accent/50 transition-colors">
-                    <Globe className="h-6 w-6 text-muted-foreground"/>
-                    <div>
-                        <p className="font-semibold">Website</p>
-                        <p className="text-sm text-muted-foreground">{CREATOR_INFO.contact.website.replace('https://www.','').replace('https://','')}</p>
-                    </div>
-                </a>
-            </CardContent>
-          </Card>
+    <div className="flex flex-col items-center justify-center min-h-[80svh] text-center p-4">
+      <div className="flex flex-col items-center gap-6">
+        <Logo className="w-32 h-32" />
+        <div className="space-y-2">
+            <h1 className="text-4xl sm:text-5xl font-bold font-headline tracking-tight text-primary">
+                Enfrente a ansiedade de cara.
+            </h1>
+            <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto">
+                Seu companheiro com técnicas simples e eficazes para momentos de crise.
+            </p>
         </div>
-
-        <div className="lg:col-span-1">
-            <WhatsAppSupport />
-        </div>
+        <Button asChild size="lg" className="mt-4">
+            <Link href="/sobre-o-criador">
+                Começar
+                <ArrowRight className="ml-2 h-5 w-5" />
+            </Link>
+        </Button>
       </div>
     </div>
   );

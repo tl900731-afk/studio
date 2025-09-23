@@ -14,6 +14,7 @@ import {
   BookOpen,
   BrainCircuit,
   HeartPulse,
+  Home,
   LifeBuoy,
   User,
   Wind,
@@ -22,7 +23,8 @@ import {
 import { Logo } from "./logo";
 
 const navItems = [
-  { href: "/", label: "Sobre o Criador", icon: User },
+  { href: "/", label: "Início", icon: Home },
+  { href: "/sobre-o-criador", label: "Sobre o Criador", icon: User },
   { href: "/about-program", label: "Sobre o Programa", icon: BookOpen },
   {
     label: "Técnicas",
