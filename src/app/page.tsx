@@ -24,7 +24,13 @@ export default function CreatorPage() {
                 <Avatar className="h-24 w-24 border">
                     <AvatarImage asChild>
                         {creatorImage ? (
-                            <Image src={creatorImage.imageUrl} alt={CREATOR_INFO.name} width={96} height={96} data-ai-hint={creatorImage.imageHint} />
+                            <Image 
+                              src={creatorImage.imageUrl} 
+                              alt={CREATOR_INFO.name} 
+                              width={96} 
+                              height={96} 
+                              data-ai-hint={creatorImage.imageHint} 
+                            />
                         ) : (
                             <div className="w-full h-full bg-muted" />
                         )}
