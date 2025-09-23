@@ -7,9 +7,11 @@ import { WhatsAppIcon } from "@/app/components/icons";
 import { WhatsAppSupport } from "@/app/components/whatsapp-support";
 import Image from "next/image";
 import { logAccess } from "@/lib/logging";
+import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 export default function CreatorPage() {
     logAccess("Criador");
+    const creatorImage = PlaceHolderImages.find(img => img.id === 'creator');
     const formatPhone = (phone: string) =>
     phone.replace(/(\d{2})(\d{2})(\d{5})(\d{4})/, "+$1 ($2) $3-$4");
 
@@ -21,7 +23,11 @@ export default function CreatorPage() {
             <CardHeader className="flex flex-col sm:flex-row items-start gap-4 bg-muted/50 p-6">
                 <Avatar className="h-24 w-24 border">
                     <AvatarImage asChild>
-                        <Image src="/images/creator.jpeg" alt={CREATOR_INFO.name} width={96} height={96} data-ai-hint="portrait man" />
+                        {creatorImage ? (
+                            <Image src={creatorImage.imageUrl} alt={CREATOR_INFO.name} width={96} height={96} data-ai-hint={creatorImage.imageHint} />
+                        ) : (
+                            <div className="w-full h-full bg-muted" />
+                        )}
                     </AvatarImage>
                     <AvatarFallback>{CREATOR_INFO.name.charAt(0)}</AvatarFallback>
                 </Avatar>

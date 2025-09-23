@@ -1,3 +1,10 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "creator",
+      "description": "Foto do criador do programa, Pr. Francisco Brandão.",
+      "imageUrl": "/images/creator.jpeg",
+      "imageHint": "portrait man"
+    }
+  ]
 }
