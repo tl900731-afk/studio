@@ -24,7 +24,6 @@ import { Logo } from "./logo";
 
 const navItems = [
   { href: "/", label: "Início", icon: Home },
-  { href: "/welcome", label: "Boas-vindas", icon: Home },
   { href: "/sobre-o-criador", label: "Sobre o Criador", icon: User },
   { href: "/about-program", label: "Sobre o Programa", icon: BookOpen },
   {
