@@ -22,7 +22,7 @@ export default function CreatorPage() {
           <Card className="overflow-hidden">
             <CardHeader className="flex flex-col sm:flex-row items-start gap-4 bg-muted/50 p-6">
                 <Avatar className="h-24 w-24 border">
-                    {creatorImage && (
+                    {creatorImage ? (
                         <Image
                             src={creatorImage.imageUrl}
                             alt={CREATOR_INFO.name}
@@ -31,8 +31,9 @@ export default function CreatorPage() {
                             data-ai-hint={creatorImage.imageHint}
                             className="aspect-square h-full w-full"
                         />
+                    ) : (
+                        <AvatarFallback>{CREATOR_INFO.name.charAt(0)}</AvatarFallback>
                     )}
-                    <AvatarFallback>{CREATOR_INFO.name.charAt(0)}</AvatarFallback>
                 </Avatar>
                 <div className="grid gap-0.5 pt-2">
                     <CardTitle className="text-2xl font-headline">

@@ -25,9 +25,9 @@ export default function ImmediateHelpPage() {
                 <p className="text-muted-foreground text-lg text-center">
                     É importante diferenciar uma crise de ansiedade de uma emergência médica. Procure um pronto-socorro se, junto com a ansiedade, você tiver:
                 </p>
-                <ul className="list-disc list-inside space-y-2 text-lg p-4 bg-destructive/10 rounded-lg text-destructive-foreground">
+                <ul className="list-disc list-inside space-y-2 text-lg p-4 bg-destructive/10 rounded-lg">
                     {immediateHelpSigns.map(sign => (
-                        <li key={sign} className="text-red-700">{sign}</li>
+                        <li key={sign} className="text-destructive-foreground">{sign}</li>
                     ))}
                 </ul>
             </CardContent>
