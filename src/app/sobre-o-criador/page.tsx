@@ -22,19 +22,13 @@ export default function CreatorPage() {
           <Card className="overflow-hidden">
             <CardHeader className="flex flex-col sm:flex-row items-start gap-4 bg-muted/50 p-6">
                 <Avatar className="h-24 w-24 border">
-                    <AvatarImage asChild>
-                        {creatorImage ? (
-                            <Image 
-                              src={creatorImage.imageUrl} 
-                              alt={CREATOR_INFO.name} 
-                              width={96} 
-                              height={96} 
-                              data-ai-hint={creatorImage.imageHint} 
-                            />
-                        ) : (
-                            <div className="w-full h-full bg-muted" />
-                        )}
-                    </AvatarImage>
+                    <AvatarImage
+                        src={creatorImage?.imageUrl}
+                        alt={CREATOR_INFO.name}
+                        width={96}
+                        height={96}
+                        data-ai-hint={creatorImage?.imageHint}
+                    />
                     <AvatarFallback>{CREATOR_INFO.name.charAt(0)}</AvatarFallback>
                 </Avatar>
                 <div className="grid gap-0.5 pt-2">
